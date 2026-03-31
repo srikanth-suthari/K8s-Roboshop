@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: debug-machine
+  namespace: roboshop   # This container should be in the same namespace for debugging purpose
+spec:
+  containers:
+    - name: debug-machine
+      image: srikanthsuthari/debug:v1
