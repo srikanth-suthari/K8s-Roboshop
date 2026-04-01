@@ -24,7 +24,6 @@ spec:
           port: 27017
         initialDelaySeconds: 5
         failureThreshold: 3
-
 ---
 # Service of mongodb
 apiVersion: v1
