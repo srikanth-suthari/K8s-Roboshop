@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalogue
+  namespace: roboshop
+  labels:
+    name: catalogue
+    env: backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: catalogue
+      env: backend
+  template:
+    metadata:
+      name: catalogue
+      labels:
+        name: catalogue
+        env: backend
+    spec:
+      containers:
+        - name: catalogue
+          image: srikanthsuthari/catalogue:v1
+---
+# Service for catalogue
+apiVersion: v1
+kind: Service
+metadata:
+  name: catalogue-svc
+spec:
+  selector:
+    name: catalogue
+    env: backend
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
