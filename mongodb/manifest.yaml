@@ -22,18 +22,18 @@ spec:
       containers:
       - name: mongodb
         image: srikanthsuthari/mongodb:v1
-    readinessProbe:
-      httpGet:
-        path: /health
-        port: 27017
-      initialDelaySeconds: 20
-      periodSeconds: 5
-    livenessProbe:
-      httpGet:
-        path: /health
-        port: 27017
-      initialDelaySeconds: 15
-      periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 27017
+          initialDelaySeconds: 20
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 27017
+          initialDelaySeconds: 15
+          periodSeconds: 5
 ---
 # Service for Mongodb
 apiVersion: v1
