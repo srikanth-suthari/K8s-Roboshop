@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+  namespace: roboshop
+  labels:
+    name: mongodb
+    env: db
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: mongodb
+      env: db
+  template:
+    metadata:
+      name: mongodb
+      labels:
+        name: mongodb
+        env: db
+    spec:
+      containers:
+      - name: mongodb
+        image: srikanthsuthari/mongodb:v1
+      readinessProbe:
+        httpGet:
+          path: /health
+          port: 27017
+        initialDelaySeconds: 20
+        periodSeconds: 5
+      livenessProbe:
+        httpGet:
+          path: /health
+          port: 27017
+        initialDelaySeconds: 15
+        periodSeconds: 5
+---
+# Service for Mongodb
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb
+  namespace: roboshop
+spec:
+  selector:
+    name: mongodb
+    env: db
+  ports:
+    - protocol: TCP
+      port: 27017	# Service Port - we access the serivce using this port
+      targetPort: 27017 # Container Port - service will access the app or db with this port.
