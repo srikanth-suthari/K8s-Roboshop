@@ -12,7 +12,7 @@ spec:
   selector:
     matchLabels:
       project: roboshop
-      compnent: mysql
+      component: mysql
       tier: db
   template:
     metadata:
