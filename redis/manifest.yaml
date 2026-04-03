@@ -6,14 +6,14 @@ metadata:
   labels:
     project: roboshop
     component: redis
-    tier: backend
+    tier: db
 spec:
   replicas: 1
   selector:
     matchLabels:
       project: roboshop
       component: redis
-      tier: backend
+      tier: db
   template:
     metadata:
       name: redis
@@ -24,20 +24,20 @@ spec:
     spec:
       containers:
       - name: redis
-        image: srikanthsuthari/redis:v1
+        image: redis:7.0
         imagePullPolicy: Always
-        # readinessProbe:
-        #   httpGet:
-        #     path: /health
-        #     port: 6379
-        #   initialDelaySeconds: 20
-        #   periodSeconds: 10
-        # livenessProbe:
-        #   httpGet:
-        #     path: /health
-        #     port: 6379
-        #   initialDelaySeconds: 10
-        #   periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 6379
+          initialDelaySeconds: 20
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 6379
+          initialDelaySeconds: 10
+          periodSeconds: 5
 ---
 # Service for redis
 apiVersion: v1
@@ -49,7 +49,7 @@ spec:
   selector:
     project: roboshop
     component: redis
-    tier: backend
+    tier: db
   ports:
   - protocol: TCP
     port: 6379
