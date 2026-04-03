@@ -20,7 +20,7 @@ spec:
       labels:
         project: roboshop
         component: redis
-        tier: backend
+        tier: db
     spec:
       containers:
       - name: redis
