@@ -22,3 +22,5 @@ spec:
   containers:
     - name: debug-machine
       image: srikanthsuthari/debug:v1
+      imagePullPolicy: Always
+      
