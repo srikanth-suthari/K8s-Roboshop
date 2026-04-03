@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: roboshop
+  labels:
+    project: roboshop
+    component: mysql
+    tier: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: roboshop
+      compnent: mysql
+      tier: db
+  template:
+    metadata:
+      name: mysql
+      labels:
+        project: roboshop
+        component: mysql
+        tier: db
+    spec:
+      containers:
+      - name: mysql
+        image: srikanthsuthari/mysql:v1
+        imagePullPolicy: Always
+        ports:
+        - name: mysql-port
+          containerPort: 3306
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: mysql-port
+          initialDelaySeconds: 60
+          periodSeconds: 20
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: mysql-port
+          initialDelaySeconds: 30
+          periodSeconds: 10
+---
+# Service for mysql DB
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  namespace: roboshop
+spec:
+  selector:
+    project: roboshop
+    component: mysql
+    tier: db
+  ports:
+  - protocol: TCP
+    port: 3306
+    targetPort: 3306
