@@ -20,7 +20,6 @@ metadata:
   #       env: test
 spec:
   containers:
-    - name: debug-machine
-      image: srikanthsuthari/debug:v1
-      imagePullPolicy: Always
-      
+  - name: debug-machine
+    image: srikanthsuthari/debug:v1
+    imagePullPolicy: Always
