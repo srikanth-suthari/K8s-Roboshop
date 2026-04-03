@@ -1,24 +1,24 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
   name: debug-machine
   namespace: roboshop   # This container should be in the same namespace for debugging purpose
-  labels:
-    name: debug-machine
-    env: test
+  # labels:
+  #   name: debug-machine
+  #   env: test
+# spec:
+  # replicas: 1
+  # selector:
+  #   matchLabels:
+  #     name: debug-machine
+  #     env: test
+  # template:
+  #   metadata:
+  #     name: debug-machine
+  #     labels:
+  #       name: debug-machine
+  #       env: test
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      name: debug-machine
-      env: test
-  template:
-    metadata:
-      name: debug-machine
-      labels:
-        name: debug-machine
-        env: test
-    spec:
-      containers:
-        - name: debug-machine
-          image: srikanthsuthari/debug:v1
+  containers:
+    - name: debug-machine
+      image: srikanthsuthari/debug:v1
