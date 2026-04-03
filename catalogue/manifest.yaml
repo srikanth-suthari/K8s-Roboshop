@@ -22,7 +22,22 @@ spec:
       containers:
         - name: catalogue
           image: srikanthsuthari/catalogue:v1
+          ports:
+          - name: liveness-port
+            containerPort: 8080
           imagePullPolicy: Always
+      readinessProbe:
+        httpGet:
+          path: /health
+          port: liveness-port     # another kind of usage for port
+        initialDelaySeconds: 10
+        periodSeconds: 5
+      livenessProbe:
+        httpGet:
+          path: /health
+          port: liveness-port
+        initialDelaySeconds: 20
+        periodSeconds: 10
 ---
 # Service for catalogue
 apiVersion: v1
