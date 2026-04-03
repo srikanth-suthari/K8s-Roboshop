@@ -29,10 +29,13 @@ spec:
       containers:
       - name: catalogue
         image: srikanthsuthari/catalogue:v1
+        imagePullPolicy: Always
+        envFrom:
+        - configMapRef:
+            name: roboshop
         ports:
         - name: liveness-port
           containerPort: 8080
-        imagePullPolicy: Always
         readinessProbe:
           httpGet:
             path: /health

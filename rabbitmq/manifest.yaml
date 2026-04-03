@@ -6,3 +6,26 @@ metadata:
     project: roboshop
     component: rabbitmq
     tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: roboshop
+      component: rabbitmq
+      tier: backend
+  template:
+    metadata:
+      name: rabbitmq
+      labels:
+        project: roboshop
+        component: rabbitmq
+        tier: backend
+    spec:
+      containers:
+      - name: rabbitmq
+        image: rabbitmq:7
+        imagePullPolicy: Always
+      readinessProbe:
+        httpGet:
+          path: /health
+          port: 
