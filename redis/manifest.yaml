@@ -18,7 +18,7 @@ spec:
     metadata:
       name: redis
       labels:
-        project: roboshp
+        project: roboshop
         component: redis
         tier: backend
     spec:
