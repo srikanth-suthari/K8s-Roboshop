@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: redis
-        image: redis:7.0
+        image: srikanthsuthari/redis:v1
         imagePullPolicy: Always
         readinessProbe:
           httpGet:
