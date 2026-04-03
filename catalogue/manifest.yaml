@@ -34,7 +34,7 @@ spec:
         imagePullPolicy: Always
         envFrom:
         - configMapRef:
-            name: roboshop
+            name: catalogue
         ports:
         - name: liveness-port
           containerPort: 8080
