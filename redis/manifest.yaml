@@ -36,7 +36,7 @@ spec:
           httpGet:
             path: /health
             port: 6379
-          initialDelaySeonds: 10
+          initialDelaySeconds: 10
           periodSeconds: 5
 ---
 # Service for redis
