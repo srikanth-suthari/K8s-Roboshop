@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: roboshop
+  labels:
+    project: roboshop
+    component: redis
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: roboshop
+      component: redis
+      tier: backend
+  template:
+    metadata:
+      name: redis
+      labels:
+        project: roboshp
+        component: redis
+        tier: backend
+    spec:
+      containers:
+      - name: redis
+        image: srikanthsuthari/redis:v1
+        imagePullPolicy: Always
+
+---
+# Service for redis
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  namespace: roboshop
+spec:
+  selector:
+    project: roboshop
+    component: redis
+    tier: backend
+  ports:
+  - protocol: TCP
+    port: 6379
+    targetPort: 6379
