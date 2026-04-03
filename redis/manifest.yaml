@@ -26,18 +26,16 @@ spec:
       - name: redis
         image: redis:7.0
         imagePullPolicy: Always
-        # readinessProbe:
-        #   httpGet:
-        #     path: /health
-        #     port: 6379
-        #   initialDelaySeconds: 10
-        #   periodSeconds: 10
-        # livenessProbe:
-        #   httpGet:
-        #     path: /health
-        #     port: 6379
-        #   initialDelaySeconds: 5
-        #   periodSeconds: 5
+        readinessProbe:
+          tcpSocket:
+            port: 6379
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: 6379
+          initialDelaySeconds: 5
+          periodSeconds: 5
 ---
 # Service for redis
 apiVersion: v1
