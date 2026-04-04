@@ -26,18 +26,18 @@ spec:
       - name: rabbitmq
         image: rabbitmq:7
         imagePullPolicy: Always
-      readinessProbe:
-        httpGet:
-          path: /health
-          port: 5372
-        initialDelaySeconds: 20
-        perionSeconds: 10
-      livenessProbe:
-        httpGet:
-          path: /health
-          port: 5372
-        initialDelaySeconds: 10
-        periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5372
+          initialDelaySeconds: 20
+          perionSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5372
+          initialDelaySeconds: 10
+          periodSeconds: 5
 ---
 # Service for rabbitmq
 apiVersion: v1
