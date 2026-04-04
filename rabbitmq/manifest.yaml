@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: rabbitmq
+  namespace: roboshop
   labels:
     project: roboshop
     component: rabbitmq
@@ -38,3 +39,18 @@ spec:
         initialDelaySeconds: 10
         periodSeconds: 5
 ---
+# Service for rabbitmq
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq
+  namespace: roboshop
+spec:
+  selector:
+    project: roboshop
+    component: rabbitmq
+    tier: backend
+  ports:
+  - protocol: TCP
+    port: 5372
+    targetPort: 5372
