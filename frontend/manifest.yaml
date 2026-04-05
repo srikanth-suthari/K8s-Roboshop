@@ -25,7 +25,6 @@ spec:
       containers:
       - name: frontend
         image: srikanthsuthari/frontend:v1
-        restartPolicy: Always
         imagePullPolicy: Always
         readinessProbe:
           httpGet:
