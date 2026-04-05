@@ -46,7 +46,7 @@ metadata:
   name: frontend
   namespace: roboshop
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     project: roboshop
     component: frontend
