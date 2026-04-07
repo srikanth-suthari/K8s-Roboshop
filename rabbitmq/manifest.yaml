@@ -6,25 +6,30 @@ metadata:
   labels:
     project: roboshop
     component: rabbitmq
-    tier: backend
+    tier: db
 spec:
   replicas: 1
   selector:
     matchLabels:
       project: roboshop
       component: rabbitmq
-      tier: backend
+      tier: db
   template:
     metadata:
       name: rabbitmq
       labels:
         project: roboshop
         component: rabbitmq
-        tier: backend
+        tier: db
     spec:
       containers:
       - name: rabbitmq
         image: rabbitmq:3       # or srikanthsuthari/rabbitmq:V1
+        env:
+        - name: RABBITMQ_DEFAULT_USER
+          value: roboshop
+        - name: RABBITMQ_DEFAULT_PASS
+          value: roboshop123
         imagePullPolicy: Always
         readinessProbe:
           httpGet:
@@ -49,7 +54,7 @@ spec:
   selector:
     project: roboshop
     component: rabbitmq
-    tier: backend
+    tier: db
   ports:
   - protocol: TCP
     port: 5672
