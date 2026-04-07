@@ -29,18 +29,18 @@ spec:
         ports:
         - name: mysql-port
           containerPort: 3306
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: mysql-port
-          initialDelaySeconds: 60
-          periodSeconds: 20
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: mysql-port
-          initialDelaySeconds: 30
-          periodSeconds: 10
+        # readinessProbe:
+        #   httpGet:
+        #     path: /health
+        #     port: mysql-port
+        #   initialDelaySeconds: 60
+        #   periodSeconds: 20
+        # livenessProbe:
+        #   httpGet:
+        #     path: /health
+        #     port: mysql-port
+        #   initialDelaySeconds: 30
+        #   periodSeconds: 10
 ---
 # Service for mysql DB
 apiVersion: v1
