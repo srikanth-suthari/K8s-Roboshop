@@ -39,6 +39,9 @@ spec:
       containers:
       - name: payment
         image: srikanthsuthari/payment:v1
+        envFrom:
+        - configMapRef:
+            name: payment
         imagePullPolicy: Always
         readinessProbe:
           httpGet:
