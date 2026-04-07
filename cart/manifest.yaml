@@ -29,7 +29,7 @@ spec:
       name: cart
       labels:
         project: roboshop
-        compnent: cart
+        component: cart
         tier: backend
     spec:
       containers:
