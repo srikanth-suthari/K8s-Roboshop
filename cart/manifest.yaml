@@ -59,6 +59,7 @@ metadata:
   name: cart
   namespace: roboshop
 spec:
+  type: ClusterIP
   selector:
     project: roboshop
     component: cart
