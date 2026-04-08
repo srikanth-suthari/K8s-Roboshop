@@ -35,6 +35,11 @@ spec:
       - name: dispatch
         image: srikanthsuthari/dispatch:v1
         imagePullPolicy: Always
+        env:
+        - name: AMQP_USER
+          value: "roboshop"
+        - name: AMQP_PASS
+          value: "roboshop123"
         envFrom:
         - configMapRef:
             name: dispatch
