@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dispatch
+data:
+  AMQP_HOST: "rabbitmq"
+  AMQP_USER: "roboshop"
+  AMQP_PASS: "roboshop123"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dispatch
+  namespace: roboshop
+  labels:
+    project: roboshop
+    component: dispatch
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: roboshop
+      component: dispatch
+      tier: backend
+  template:
+    metadata:
+      name: dispatch
+      labels:
+        project: roboshop
+        component: dispatch
+        tier: backend
+    spec:
+      containers:
+      - name: dispatch
+        image: srikanthsuthari/dispatch:v1
+        imagePullPolicy: Always
+        envFrom:
+        - configMapRef:
+            name: dispatch
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 20
+          failureThreshold: 2
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 15
+          failureThreshold: 2
+          periodSeconds: 10
+---
+# Service for dispatch
+apiVersion: v1
+kind: Service
+metadata:
+  name: dispatch
+  namespace: roboshop
+spec:
+  selector:
+    project: roboshop
+    component: dispatch
+    tier: backend
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
