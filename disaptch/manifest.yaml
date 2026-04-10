@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
       - name: dispatch
-        image: srikanthsuthari/dispatch:v1
+        image: srikanthsuthari/dispatch:v2
         imagePullPolicy: Always
         envFrom:
         - configMapRef:

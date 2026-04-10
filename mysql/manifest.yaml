@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: srikanthsuthari/mysql:v1
+        image: srikanthsuthari/mysql:v2
         imagePullPolicy: Always
         ports:
         - name: mysql-port

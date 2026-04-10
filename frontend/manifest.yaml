@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: srikanthsuthari/frontend:v1
+        image: srikanthsuthari/frontend:v2
         imagePullPolicy: Always
         # readinessProbe:
         #   httpGet:

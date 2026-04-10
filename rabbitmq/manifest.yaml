@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: rabbitmq
-        image: rabbitmq:3       # or srikanthsuthari/rabbitmq:V1
+        image: srikanthsuthari/rabbitmq:v2
         env:
         - name: RABBITMQ_DEFAULT_USER
           value: roboshop

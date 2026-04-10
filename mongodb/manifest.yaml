@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: mongodb
-        image: srikanthsuthari/mongodb:v1
+        image: srikanthsuthari/mongodb:v2
         imagePullPolicy: Always
         readinessProbe:
           httpGet:

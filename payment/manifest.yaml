@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
       - name: payment
-        image: srikanthsuthari/payment:v1
+        image: srikanthsuthari/payment:v2
         envFrom:
         - configMapRef:
             name: payment
