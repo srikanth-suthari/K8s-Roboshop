@@ -31,16 +31,16 @@ spec:
         - name: RABBITMQ_DEFAULT_PASS
           value: roboshop123
         imagePullPolicy: Always
-        readinessProbe:
-          tcpSocket:
-            port: 5672
-          initialDelaySeconds: 20
-          periodSeconds: 10
-        livenessProbe:
-          tcpSocket:
-            port: 5672
-          initialDelaySeconds: 10
-          periodSeconds: 5
+        # readinessProbe:
+        #   tcpSocket:
+        #     port: 5672
+        #   initialDelaySeconds: 20
+        #   periodSeconds: 10
+        # livenessProbe:
+        #   tcpSocket:
+        #     port: 5672
+        #   initialDelaySeconds: 10
+        #   periodSeconds: 5
 ---
 # Service for rabbitmq
 apiVersion: v1
