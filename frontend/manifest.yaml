@@ -26,20 +26,20 @@ spec:
       - name: frontend
         image: srikanthsuthari/frontend:v2@sha256:19c50be587b8352687f0ab3ab8d40a6701e66f772f5237c4d8514c35c3357983
         imagePullPolicy: Always
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 20
-          failureThreshold: 1
-          periodSeconds: 10
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 10
-          failureThreshold: 1
-          periodSeconds: 5
+        # readinessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 80
+        #   initialDelaySeconds: 20
+        #   failureThreshold: 1
+        #   periodSeconds: 10
+        # livenessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 80
+        #   initialDelaySeconds: 10
+        #   failureThreshold: 1
+        #   periodSeconds: 5
 ---
 # Service for frontend
 apiVersion: v1
