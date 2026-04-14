@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: srikanthsuthari/frontend:v2
+        image: srikanthsuthari/frontend:v2@sha256:19c50be587b8352687f0ab3ab8d40a6701e66f772f5237c4d8514c35c3357983
         imagePullPolicy: Always
         readinessProbe:
           httpGet:
