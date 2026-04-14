@@ -26,18 +26,20 @@ spec:
       - name: frontend
         image: srikanthsuthari/frontend:v2
         imagePullPolicy: Always
-        # readinessProbe:
-        #   httpGet:
-        #     path: /
-        #     port: 80
-        #   initialDelaySeconds: 20
-        #   periodSeconds: 10
-        # livenessProbe:
-        #   httpGet:
-        #     path: /
-        #     port: 80
-        #   initialDelaySeconds: 10
-        #   periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 20
+          failureThreshold: 1
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          failureThreshold: 1
+          periodSeconds: 5
 ---
 # Service for frontend
 apiVersion: v1
