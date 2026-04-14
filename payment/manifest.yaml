@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
       - name: payment
-        image: srikanthsuthari/payment:v2
+        image: srikanthsuthari/payment:v2@sha256:ccaef54232e0f9678352012ef1e15d69aa4bab311d2773163252e5eb70e9b148
         imagePullPolicy: Always
         envFrom:
         - configMapRef:
