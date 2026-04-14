@@ -39,10 +39,10 @@ spec:
       containers:
       - name: payment
         image: srikanthsuthari/payment:v2
+        imagePullPolicy: Always
         envFrom:
         - configMapRef:
             name: payment
-        imagePullPolicy: Always
         # readinessProbe:
         #   httpGet:
         #     path: /health
