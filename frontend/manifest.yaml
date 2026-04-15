@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: frontend
   namespace: roboshop
-data:
+data:         # Here changed the listening port from 80 to 8090 for testing purpose.
   nginx.conf: |
     user nginx;
     worker_processes auto;
@@ -133,5 +133,5 @@ spec:
     tier: frontend
   ports:
   - protocol: TCP
-    port: 90
+    port: 90          # Tried changing the port of the service from 80 to 90
     targetPort: 8090
