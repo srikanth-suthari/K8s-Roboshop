@@ -115,7 +115,7 @@ spec:
           mountPath: /etc/nginx/nginx.conf
           subPath: /nginx.conf
       volumes:
-      - name: nginx-confog
+      - name: nginx-config
         configMap:
           name: frontend
 ---
