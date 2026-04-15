@@ -34,8 +34,8 @@ data:
         include /etc/nginx/conf.d/*.conf;
 
         server {
-            listen       80;
-            listen       [::]:80;
+            listen       8090;
+            listen       [::]:8090;
             server_name  _;
             root         /usr/share/nginx/html;
 
@@ -110,6 +110,14 @@ spec:
         #   initialDelaySeconds: 10
         #   failureThreshold: 1
         #   periodSeconds: 5
+        volumeMount:
+        - name: nginx-config
+          mountPath: /etc/nginx/nginx.conf
+          subPath: /nginx.conf
+      volumes:
+      - name: nginx-confog
+        configMap:
+          name: frontend
 ---
 # Service for frontend
 apiVersion: v1
@@ -126,4 +134,4 @@ spec:
   ports:
   - protocol: TCP
     port: 80
-    targetPort: 80
+    targetPort: 8090
