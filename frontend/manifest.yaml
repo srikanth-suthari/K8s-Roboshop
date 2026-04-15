@@ -133,5 +133,5 @@ spec:
     tier: frontend
   ports:
   - protocol: TCP
-    port: 80
+    port: 90
     targetPort: 8090
