@@ -34,8 +34,8 @@ data:         # Here changed the listening port from 80 to 8090 for testing purp
         include /etc/nginx/conf.d/*.conf;
 
         server {
-            listen       8090;
-            listen       [::]:8090;
+            listen       80;
+            listen       [::]:80;
             server_name  _;
             root         /usr/share/nginx/html;
 
@@ -133,5 +133,5 @@ spec:
     tier: frontend
   ports:
   - protocol: TCP
-    port: 90          # Tried changing the port of the service from 80 to 90
-    targetPort: 8090
+    port: 80         # Tried changing the port of the service from 80 to 90
+    targetPort: 80
